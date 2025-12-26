@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>Comfort AI</h2>
+<p>Describe your situation below. The AI will provide comforting words while calming sounds play in the background.</p>
+
+<form id="comfort-form">
+    <textarea id="situation-input" placeholder="Describe your situation..." required></textarea>
+    <button type="submit">Get Comforting Words</button>
+</form>
+
+<div id="ai-output" style="margin-top:20px; font-weight:bold;"></div>
+
+<h3>Adjust Sounds</h3>
+
+<div>
+    <label>Rain</label>
+    <input type="range" id="rain-slider" min="0" max="100" value="50">
+    <button type="button" id="rain-play">Play</button>
+    <button type="button" id="rain-pause">Pause</button>
+</div>
+
+<div>
+    <label>Waves</label>
+    <input type="range" id="waves-slider" min="0" max="100" value="50">
+    <button type="button" id="waves-play">Play</button>
+    <button type="button" id="waves-pause">Pause</button>
+</div>
+
+<div>
+    <label>Fire</label>
+    <input type="range" id="fire-slider" min="0" max="100" value="50">
+    <button type="button" id="fire-play">Play</button>
+    <button type="button" id="fire-pause">Pause</button>
+</div>
+
+<script>
+
+const rain = new Audio("/static/sounds/rain.mp3");
+const waves = new Audio("/static/sounds/waves.mp3");
+const fire = new Audio("/static/sounds/fire.mp3");
+
+[rain, waves, fire].forEach(sound => {
+    sound.loop = true;
+    sound.preload = "auto";
+    sound.volume = 0.2;
+});
+
+document.getElementById("rain-slider").oninput = function() { rain.volume = this.value / 100; }
+document.getElementById("waves-slider").oninput = function() { waves.volume = this.value / 100; }
+document.getElementById("fire-slider").oninput = function() { fire.volume = this.value / 100; }
+
+
+document.getElementById("rain-play").onclick = () => rain.play();
+document.getElementById("rain-pause").onclick = () => rain.pause();
+document.getElementById("waves-play").onclick = () => waves.play();
+document.getElementById("waves-pause").onclick = () => waves.pause();
+document.getElementById("fire-play").onclick = () => fire.play();
+document.getElementById("fire-pause").onclick = () => fire.pause();
+
+window.addEventListener("load", () => {
+    [rain, waves, fire].forEach(sound => {
+        const playPromise = sound.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(err => console.log("Autoplay blocked:", err));
+        }
+    });
+});
+
+document.getElementById("comfort-form").addEventListener("submit", async e => {
+    e.preventDefault(); 
+
+    const situation = document.getElementById("situation-input").value;
+
+    const response = await fetch("/ai_comfort", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `situation=${encodeURIComponent(situation)}`
+    });
+
+    const data = await response.json();
+    document.getElementById("ai-output").innerText = data.comfort;
+});
+</script>
+{% endblock %}
+

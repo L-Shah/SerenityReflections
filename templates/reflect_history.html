@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Your Past Reflections</h2>
+
+{% for r in reflections %}
+<div class="reflection-box">
+    <p><strong>{{ r.timestamp }}</strong></p>
+    <p>1: {{ r.q1 }}</p>
+    <p>2: {{ r.q2 }}</p>
+    <p>3: {{ r.q3 }}</p>
+    <p>4: {{ r.q4 }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>Welcome to Reflection</h2>
+
+<p>
+    Reflection is a process to help you understand your thoughts and feelings.
+    Take your time and answer each question honestly and thoughtfully.
+</p>
+
+<p><strong>Instructions:</strong></p>
+<ul>
+    <li>Find a quiet and comfortable place.</li>
+    <li>You can play background calming sounds while reflecting.</li>
+    <li>Answer the questions step by step.</li>
+    <li>If you want, you can use the AI helper to rephrase your answers.</li>
+</ul>
+
+<a href="/reflect/step/1">
+    <button>Start Reflection</button>
+</a>
+
+
+<div id="soundboard">
+    <h3>Background Sounds</h3>
+    <label>Rain: <input type="range" id="rain-slider" min="0" max="100" value="50"></label>
+    <button id="rain-play">Play</button>
+    <button id="rain-pause">Pause</button>
+    <br>
+    <label>Waves: <input type="range" id="waves-slider" min="0" max="100" value="50"></label>
+    <button id="waves-play">Play</button>
+    <button id="waves-pause">Pause</button>
+    <br>
+    <label>Fire: <input type="range" id="fire-slider" min="0" max="100" value="50"></label>
+    <button id="fire-play">Play</button>
+    <button id="fire-pause">Pause</button>
+</div>
+
+<script src="/static/soundboard.js"></script>
+{% endblock %}

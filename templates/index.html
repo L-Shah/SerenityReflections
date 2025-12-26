@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to SerenityReflections 🌿</h1>
+        <p class="hero-subtitle">
+            A gentle space created just for you — to reflect, unwind, breathe,
+            and reconnect with your thoughts in a comforting way.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- Features Section -->
+    <section class="features">
+
+        <!-- Reflection Journal -->
+        <div class="feature-card">
+            <h2>📝 Daily Reflection</h2>
+            <p>
+                Move through our guided 4-step reflection process designed to help you
+                understand your day, your emotions, and what you can learn from your experiences.
+            </p>
+            <a href="/reflect">
+                <button>Start Reflecting</button>
+            </a>
+        </div>
+
+        <!-- Comfort Feature -->
+        <div class="feature-card">
+            <h2>💬 Gentle Comfort</h2>
+            <p>
+                Share what’s on your mind and receive soft, supportive words from our
+                calming AI assistant — a space where you can feel heard without judgment.
+            </p>
+            <a href="/comfort">
+                <button>Seek Comfort</button>
+            </a>
+        </div>
+
+        <!-- Audio / Soundboard -->
+        <div class="feature-card">
+            <h2>🎧 Peaceful Soundboard</h2>
+            <p>
+                Listen to relaxing audio clips designed to help you breathe easier, unwind,
+                or focus gently. Ideal for journaling or anytime you need a moment of peace.
+            </p>
+            <a href="/sound">
+                <button>Open Soundboard</button>
+            </a>
+        </div>
+
+    </section>
+
+</main>
+{% endblock %}

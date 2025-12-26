@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="form-container mx-auto mt-5" style="max-width: 400px;">
+    <h2 class="text-center mb-4">Register</h2>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form action="/register" method="post">
+        <div class="form-group mb-3">
+            <label>Username</label>
+            <input autocomplete="off" autofocus class="form-control" name="username" type="text">
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Password</label>
+            <input class="form-control" name="password" type="password">
+        </div>
+
+        <button class="btn btn-primary w-100" type="submit">Create Account</button>
+    </form>
+
+    <p class="text-center mt-3">
+        Already have an account? <a href="/login">Log In</a>
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>Reflection Step {{ step }}</h2>
+
+<p><strong>Question:</strong> {{ question }}</p>
+
+<form method="POST">
+    <textarea id="reflection-input" name="answer" rows="5" cols="60" required>{{ session.get('reflection', {}).get('q' ~ step, '') }}</textarea><br><br>
+    <button type="button" onclick="rephrase()">Help me rewrite this</button>
+    <input type="submit" value="Next Step">
+</form>
+
+<div id="ai-rephrase-output" style="margin-top:10px; padding:10px; border:1px solid #ccc;"></div>
+
+<hr>
+
+<h3>Background Sounds</h3>
+<div id="soundboard">
+    <label>Rain: <input type="range" id="rain-slider" min="0" max="100" value="50"></label>
+    <button type="button" id="rain-play">Play</button>
+    <button type="button" id="rain-pause">Pause</button>
+    <br>
+    <label>Waves: <input type="range" id="waves-slider" min="0" max="100" value="50"></label>
+    <button type="button" id="waves-play">Play</button>
+    <button type="button" id="waves-pause">Pause</button>
+    <br>
+    <label>Fire: <input type="range" id="fire-slider" min="0" max="100" value="50"></label>
+    <button type="button" id="fire-play">Play</button>
+    <button type="button" id="fire-pause">Pause</button>
+</div>
+
+<script src="/static/soundboard.js"></script>
+<script>
+async function rephrase() {
+    const text = document.getElementById("reflection-input").value;
+    if (!text.trim()) return alert("Please enter some text first.");
+
+    const response = await fetch("/ai_rephrase", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `text=${encodeURIComponent(text)}`
+    });
+
+    const data = await response.json();
+    document.getElementById("ai-rephrase-output").innerText = data.rephrased || "No response received.";
+}
+</script>
+{% endblock %}

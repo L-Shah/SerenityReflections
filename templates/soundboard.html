@@ -1,0 +1,49 @@
+{% extends "layout.html" %} 
+{% block body %} 
+    <h1>🌿 Relaxing Soundboard</h1> 
+    <p>Welcome! Use this soundboard to mix your favorite ambient sounds. Adjust the sliders to control the volume and press Play/Pause to start or stop all sounds.</p>
+
+    <div class="sound-control">
+    <label>Rain Volume</label>
+    <input id="rain-slider" type="range" min="0" max="100" value="0">
+    <button id="rain-play">Play Rain</button>
+    <button id="rain-pause">Pause Rain</button>
+</div>
+
+<div class="sound-control">
+    <label>Waves Volume</label>
+    <input id="waves-slider" type="range" min="0" max="100" value="0">
+    <button id="waves-play">Play Waves</button>
+    <button id="waves-pause">Pause Waves</button>
+</div>
+
+<div class="sound-control">
+    <label>Fire Volume</label>
+    <input id="fire-slider" type="range" min="0" max="100" value="0">
+    <button id="fire-play">Play Fire</button>
+    <button id="fire-pause">Pause Fire</button>
+</div>
+
+<div class="sound-control">
+    <label>Forest Volume</label>
+    <input id="forest-slider" type="range" min="0" max="100" value="0">
+    <button id="forest-play">Play Forest</button>
+    <button id="forest-pause">Pause Forest</button>
+</div>
+
+<div class="sound-control">
+    <label>Lofi Volume</label>
+    <input id="lofi-slider" type="range" min="0" max="100" value="0">
+    <button id="lofi-play">Play Lo-fi</button>
+    <button id="lofi-pause">Pause Lo-fi</button>
+</div>
+
+<div class="sound-control">
+    <label>Brown Volume</label>
+    <input id="brown-slider" type="range" min="0" max="100" value="0">
+    <button id="brown-play">Play Brown Noise</button>
+    <button id="brown-pause">Pause Brown Noise</button>
+</div>
+
+    <script src="/static/soundboard.js"></script>
+{% endblock %}
