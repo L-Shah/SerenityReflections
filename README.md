@@ -13,6 +13,7 @@ The soundboard contains a variety of sounds/ambiences wheter to relax, unwind or
 
 The project solves the problem of unstructured journaling and emotional overwhelm by offering guided questions, reflection history, and AI-powered emotional assistance.
 It is intended for individuals who want to build self-awareness regarding their emotions, process their feelings about daily experiences, also receive supportive, non-medical feedback in a private environment or create a customisable enviroment according to their neccessity.
+
 ---
 
 ## Motivation and Purpose
@@ -25,6 +26,7 @@ This project was inspired by guided journaling apps and the idea that AI, when u
 Also many personal growth content creators and students at Harvard, Yale, Stanford and other Universities post routines on social media practicing journaling and understanding yourself which helps them a lot in their day to day life, all that has been a part of the purpose for creating SerenityReflections
 
 From a learning perspective, the project was an opportunity to practice full-stack development using Flask, session management, SQL databases, and third-party AI APIs, while also focusing on clean user experience and ethical AI usage.
+
 ---
 
 ## Features and Functionality
@@ -55,6 +57,7 @@ From a learning perspective, the project was an opportunity to practice full-sta
   Users can play calming sounds such as rain, waves, fire, forest ambience, lo-fi music, and brown noise.
   Sounds can be played simultaneously and loop continuously.
   Individual volume controls allow users to create personalized soundscapes.
+
 ---
 
 ## Project Structure
@@ -100,25 +103,14 @@ From a learning perspective, the project was an opportunity to practice full-sta
 
 ->Environment Configuration
  .env file stores sensitive information such as the Groq API key.
+
 ---
 
-## Design Decisions
 
-One major design decision was using a step-by-step reflection flow instead of a single large form. This reduces cognitive load and encourages thoughtful responses.
-AI functionality was intentionally limited to supportive and reflective tasks. System prompts explicitly prevent medical advice, ensuring ethical use of AI.
-The soundboard and Comfort AI audio features were implemented entirely on the client side using JavaScript’s Audio API. This improves responsiveness and reduces server load.
-SQLite was chosen as the database due to its simplicity, portability, and suitability for a small-scale personal application.
 ---
 
-## Challenges and Solutions
 
-->Session-Based Multi-Step Reflection
- Challenge: Preserving user input across multiple pages.
- Solution: Used Flask sessions to store responses until submission.
 
-->Asynchronous AI Communication
- Challenge: Sending user input and receiving AI responses without refreshing pages.
- Solution: Used the Fetch API with async/await and JSON responses.
 ---
 
 ## Installation and Usage
@@ -147,6 +139,7 @@ Run the Application
 
 Open your browser and navigate to:
  http://127.0.0.1:5000
+ 
 ---
 
 ## Conclusion
@@ -155,5 +148,5 @@ SerenityReflections is a guided reflection and emotional support web application
 Building this project strengthened my understanding of backend development, session management, database design, asynchronous frontend communication, and ethical AI usage. 
 The project demonstrates how technology can support mindfulness and self-reflection while respecting user safety and boundaries.
 
-Thanks to the entire CS50X Team
-I enjoyed and learned a lot.
+
+
